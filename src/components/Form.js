@@ -56,7 +56,7 @@ const UserForm = ({ values, errors, touched, status}) => {
       };
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required("We need to know your name, dude!"),
+      name: Yup.string().min(2,"Name must be longer than 2 characters").required("We need to know your name, dude!"),
       email: Yup.string().required("Email is necessary, yo!"),
       password: Yup.string().min(8, "Password must be 8 characters or longer").required(),
       
