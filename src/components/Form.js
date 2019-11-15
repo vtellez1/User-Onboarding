@@ -19,6 +19,13 @@ const UserForm = ({ values, errors, touched, status}) => {
             <p className="errors">{errors.name}</p>
             )}
 
+            <Field as="select" className="role-select" name="role">
+                <option>What is your role?</option>
+                <option value="Student">Student</option>
+                <option value="TeamLead">Team Lead</option>
+                <option value="Instructor">Instructor</option>
+            </Field>
+
             <Field type="email" name="email" placeholder="Email"/>
             {touched.email && errors.email && (
             <p className="errors">{errors.email}</p>
@@ -29,17 +36,18 @@ const UserForm = ({ values, errors, touched, status}) => {
              <p className="errors">{errors.password}</p>
             )}
 
-            <label className="checkbox-container"> I agree with the Terms of Service
+            <label className="checkbox-container"> Terms of Service
             <Field required type="checkbox" name="termsofservice" checked={values.vaccinations}/>
             </label>
             <button>Submit</button>
           </Form>
 
         {users.map(user => (
-        <ul key={user.id}>
-          <li>Species: {user.name}</li>
-          <li>Size: {user.email}</li>
-          <li>Size: {user.password}</li>
+        <ul className="userCollected" key={user.id}>
+          <li>Name: {user.name}</li>
+          <li>Role: {user.role}</li>
+          <li>Email: {user.email}</li>
+          <li>Password: {user.password}</li>
         </ul>
       ))}
       </div>
@@ -47,9 +55,10 @@ const UserForm = ({ values, errors, touched, status}) => {
   };
 
   const FormikUserForm = withFormik({
-    mapPropsToValues({ name, email, password, termsofservice}) {
+    mapPropsToValues({ name, role, email, password, termsofservice}) {
       return {
         name: name || "",
+        role: role || "",
         email: email || "",
         password: password || "",
         termsofservice: termsofservice || false,

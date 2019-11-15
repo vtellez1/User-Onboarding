@@ -5,9 +5,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.user-form{
+ background-color: lightpink;
+ display: flex;
+ flex-direction: column;
+ flex-wrap: wrap;
+ height: auto;
+ width: 17rem;
+ padding: 2rem;
+}
+
+
+.user-form .userCollected{
+  font-weight: bold;
+   list-style: none;
+ }
+
+ .user-form .checkbox-container{
+   line-height: 2rem;
+
+ }
